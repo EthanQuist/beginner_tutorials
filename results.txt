@@ -1,0 +1,20 @@
+cpplint talker.cpp
+talker.cpp:38:  Found C++ system header after other header. Should be: talker.h, c system, c++ system, other.  [build/include_order] [4]
+Done processing talker.cpp
+Total errors found: 1
+
+
+## This error cannot be fixed because we are not using a header file
+
+cpplint listener.cpp
+Done processing listener.cpp
+
+
+cppcheck talker.cpp
+Checking talker.cpp...
+
+
+cppcheck listener.cpp
+Checking listener.cpp...
+
+
