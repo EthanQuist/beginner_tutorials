@@ -2,7 +2,7 @@
 <package>
   <name>beginner_tutorials</name>
   <version>0.0.0</version>
-  <description>The beginner_tutorials package for Ethan</description>
+  <description>The beginner_tutorials package for Ethan Quist</description>
 
   <maintainer email="ethantquist@gmail.com">EthanQuist</maintainer>
   <license>BSD</license>
