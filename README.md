@@ -17,6 +17,11 @@ catkin_create_pkg beginner_tutorials std_msgs rospy roscpp
 This will then create the package "beginner_tutorials" with the dependancies std_msgs, rospy, and roscpp.
 After making the package there are two important files that must be updated. Those files are package.xml and CMakeLists.txt. The correct format for those two files are inside this repository.
 
+Further instructions on the build of this project can be found at:
+http://wiki.ros.org/ROS/Tutorials/CreatingPackage
+http://wiki.ros.org/catkin/Tutorials/create_a_workspace
+
+
 ## Run
 In order to run the Publisher and Subscriber code the first step is to have the master of ROS running in its own terminal:
 ```
@@ -33,6 +38,8 @@ rosrun beginner_tutorials listener
 ```
 
 ## Dependencies
+This entire code is depenent on the correct installation of ROS KINETIC - it is the Kinetic version of ROS and may cause errors if another version of ROS is installed on your system.
+
 The Publisher/Subscriber code is dependent of ROS's standard messages, ROS's C++ libraries, and ROS's python libraries. In the above section about building this code those libraries should naturally be include if all steps were followed correctly.
 
 ## Assumptions
