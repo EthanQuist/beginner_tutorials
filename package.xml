@@ -18,8 +18,5 @@
   <run_depend>rospy</run_depend>
   <run_depend>std_msgs</run_depend>
 
-  <exec_depend>roscpp</exec_depend>
-  <exec_depend>rospy</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
 
 </package>
