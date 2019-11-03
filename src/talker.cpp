@@ -34,8 +34,10 @@
 
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-
+#include "beginner_tutorials/AddTwoInts.h"
+#include <cstdlib>
 #include <sstream>
+//import rosservice
 
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
@@ -85,6 +87,16 @@ int main(int argc, char **argv) {
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
    */
+
+  /**
+   * This section of code will create the client aspect added to my code.
+   * It will simulate the client of Add_two_ints and add it to my string
+   */
+  ros::ServiceClient client = n.serviceClient < beginner_tutorials::AddTwoInts
+      > ("add_two_ints");
+  beginner_tutorials::AddTwoInts srv;
+
+
   int count = 0;
   while (ros::ok()) {
     /**
@@ -93,8 +105,22 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
 
     std::stringstream ss;
-    ss << "Ethan learned ROS " << count;
+
+    //using count as the two ints to add in my service
+    srv.request.a = count;
+    srv.request.b = count;
+
+    if (client.call(srv)) {
+      ROS_INFO("Service Call Worked.");
+      int doubleCount = srv.response.sum;
+      ss << "Ethan learned ROS " << count << " double count: " << doubleCount;
+    } else {
+      ROS_ERROR("Failed to use service call add_two_ints");
+      ss << "Ethan learned ROS " << count;
+    }
+
     msg.data = ss.str();
+
 
     ROS_INFO("%s", msg.data.c_str());
 
