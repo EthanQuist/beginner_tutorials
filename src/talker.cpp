@@ -37,7 +37,8 @@
 #include "beginner_tutorials/AddTwoInts.h"
 #include <cstdlib>
 #include <sstream>
-//import rosservice
+#include <ros/console.h>
+
 
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
@@ -111,11 +112,11 @@ int main(int argc, char **argv) {
     srv.request.b = count;
 
     if (client.call(srv)) {
-      ROS_INFO("Service Call Worked.");
+      ROS_INFO_STREAM("Service Call Worked.");
       int doubleCount = srv.response.sum;
       ss << "Ethan learned ROS " << count << " double count: " << doubleCount;
     } else {
-      ROS_ERROR("Failed to use service call add_two_ints");
+      ROS_ERROR_STREAM("Failed to use service call add_two_ints");
       ss << "Ethan learned ROS " << count;
     }
 
@@ -136,6 +137,16 @@ int main(int argc, char **argv) {
 
     loop_rate.sleep();
     ++count;
+    ROS_DEBUG_STREAM("count increased " << count);
+
+    if (count > 1000) {
+      ROS_WARN_STREAM("Count is getting high, consider stopping.");
+    }
+
+    if (count > 10000) {
+      ROS_FATAL_STREAM("FATAL: Count got too high");
+    }
+
   }
 
 
