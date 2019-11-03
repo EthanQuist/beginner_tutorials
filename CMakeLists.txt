@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   genmsg
+  message_generation
 )
 
 ## Generate messages in the 'msg' folder
@@ -16,7 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
 #add_message_files(DIRECTORY msg FILES Num.msg)
 
 ## Generate services in the 'srv' folder
-#add_service_files(FILES AddTwoInts.srv)
+add_service_files(FILES AddTwoInts.srv)
 #add_service_files(DIRECTORY srv FILES AddTwoInts.srv)
 
 generate_messages(DEPENDENCIES std_msgs)
