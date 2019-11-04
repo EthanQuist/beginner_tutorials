@@ -82,7 +82,10 @@ int main(int argc, char **argv) {
    */
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
-  ros::Rate loop_rate(10);
+  //taking the command line argument HERTZ
+  int hz = atoi(argv[1]);
+  //int hz = 10;
+  ros::Rate loop_rate(hz);
 
   /**
    * A count of how many messages we have sent. This is used to create

@@ -1,0 +1,12 @@
+<launch>
+  
+  <arg name="hertz" default="10" />
+
+  <node pkg="beginner_tutorials" type="add_two_ints_server" name="add_two_ints_server">
+  </node>
+  <node pkg="beginner_tutorials" type="talker" name="talker" args="$(arg hertz)">
+  </node>
+  <node pkg="beginner_tutorials" type="listener" name="listener">
+  </node>
+
+</launch>
