@@ -30,6 +30,8 @@
  * @author Ethan Quist
  *
  * @copyright Ethan Quist
+ *
+ * @params This code needs to take in a hertz integer input to run correctly
  */
 
 #include "ros/ros.h"
@@ -83,14 +85,14 @@ int main(int argc, char **argv) {
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
   //taking the command line argument HERTZ
-  int hz = atoi(argv[1]);
-  //int hz = 10;
-  ros::Rate loop_rate(hz);
+  if (argc > 1) {
+    int hz = atoi(argv[1]);
+    ros::Rate loop_rate(hz);
+  } else {
+    ros::Rate loop_rate(10);
+  }
 
-  /**
-   * A count of how many messages we have sent. This is used to create
-   * a unique string for each message.
-   */
+
 
   /**
    * This section of code will create the client aspect added to my code.
@@ -100,20 +102,25 @@ int main(int argc, char **argv) {
       > ("add_two_ints");
   beginner_tutorials::AddTwoInts srv;
 
-
+  /**
+   * A count of how many messages we have sent. This is used to create
+   * a unique string for each message.
+   */
   int count = 0;
   while (ros::ok()) {
     /**
      * This is a message object. You stuff it with data, and then publish it.
      */
     std_msgs::String msg;
-
     std::stringstream ss;
 
     //using count as the two ints to add in my service
     srv.request.a = count;
     srv.request.b = count;
 
+    /**
+     * This section of code calls the Service and has error handling if the service fails
+     */
     if (client.call(srv)) {
       ROS_INFO_STREAM("Service Call Worked.");
       int doubleCount = srv.response.sum;
@@ -124,8 +131,6 @@ int main(int argc, char **argv) {
     }
 
     msg.data = ss.str();
-
-
     ROS_INFO("%s", msg.data.c_str());
 
     /**
@@ -140,8 +145,15 @@ int main(int argc, char **argv) {
 
     loop_rate.sleep();
     ++count;
+
+    //adding debug logging stream
     ROS_DEBUG_STREAM("count increased " << count);
 
+    /**
+     * This is checking the counter to make sure it isn't going to high
+     * The fatal error checks to make sure the process wasn't left on too long
+     * This is an example of a way to check processes.
+     */
     if (count > 1000) {
       ROS_WARN_STREAM("Count is getting high, consider stopping.");
     }
