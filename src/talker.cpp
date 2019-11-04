@@ -84,7 +84,9 @@ int main(int argc, char **argv) {
    */
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
-  //taking the command line argument HERTZ
+  // taking the command line argument HERTZ
+
+  ros::Rate loop_rate(10);
   if (argc > 1) {
     int hz = atoi(argv[1]);
     ros::Rate loop_rate(hz);
@@ -114,7 +116,7 @@ int main(int argc, char **argv) {
     std_msgs::String msg;
     std::stringstream ss;
 
-    //using count as the two ints to add in my service
+    // using count as the two ints to add in my service
     srv.request.a = count;
     srv.request.b = count;
 
@@ -146,7 +148,7 @@ int main(int argc, char **argv) {
     loop_rate.sleep();
     ++count;
 
-    //adding debug logging stream
+    // adding debug logging stream
     ROS_DEBUG_STREAM("count increased " << count);
 
     /**
@@ -161,7 +163,6 @@ int main(int argc, char **argv) {
     if (count > 10000) {
       ROS_FATAL_STREAM("FATAL: Count got too high");
     }
-
   }
 
 

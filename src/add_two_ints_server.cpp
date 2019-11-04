@@ -38,8 +38,8 @@
 bool add(beginner_tutorials::AddTwoInts::Request &req,
          beginner_tutorials::AddTwoInts::Response &res) {
   res.sum = req.a + req.b;
-  ROS_INFO("request: x=%ld, y=%ld", (long int) req.a, (long int) req.b);
-  ROS_INFO("sending back response: [%ld]", (long int) res.sum);
+  ROS_INFO("request: x=%ld, y=%ld", (int64_t) req.a, (int64_t) req.b);
+  ROS_INFO("sending back response: [%ld]", (int64_t) res.sum);
   return true;
 }
 
