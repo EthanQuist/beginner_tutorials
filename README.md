@@ -20,7 +20,7 @@ After making the package there are two important files that must be updated. Tho
 
 If you already have a running catkin worspace then you can copy this respository as a package for your catkin workspace:
 ```
-cd ~/catkin_ws
+cd ~/catkin_ws/src
 git clone https://github.com/EthanQuist/beginner_tutorials.git
 ```
 
