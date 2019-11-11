@@ -8,5 +8,7 @@
   </node>
   <node pkg="beginner_tutorials" type="listener" name="listener">
   </node>
+  <node pkg="rosbag" type="record" name="record" output="screen" args="-a">
+  </node> 
 
 </launch>
