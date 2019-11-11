@@ -1,4 +1,4 @@
-# ROS Tutorial ROS Services, Logging and Launch Files
+# ROS Tutorial Rosbag, tf and gtest
 
 ## Overview
 This code was developed for ENPM808X Software Development for Robotics. The assignment was to get familiar with ROS by running several tutorials located at their webiste http://wiki.ros.org/ROS/Tutorials
