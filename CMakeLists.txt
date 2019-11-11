@@ -44,9 +44,6 @@ add_executable(add_two_ints_client src/add_two_ints_client.cpp)
 target_link_libraries(add_two_ints_client ${catkin_LIBRARIES})
 add_dependencies(add_two_ints_client beginner_tutorials_gencpp)
 
-add_executable(turtle_tf_broadcaster src/turtle_tf_broadcaster.cpp)
-target_link_libraries(turtle_tf_broadcaster ${catkin_LIBRARIES})
-
 
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)

@@ -36,8 +36,8 @@
  * @params b - the second integer
  */
 
-#include "ros/ros.h"
 #include "beginner_tutorials/AddTwoInts.h"
+#include "ros/ros.h"
 #include <cstdlib>
 
 int main(int argc, char **argv) {
