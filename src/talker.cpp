@@ -37,9 +37,14 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/AddTwoInts.h"
+#include <tf/transform_broadcaster.h>
 #include <cstdlib>
 #include <sstream>
 #include <ros/console.h>
+
+/**
+ * tf broadcaster code for Week 11 HW
+ */
 
 
 /**
@@ -57,6 +62,8 @@ int main(int argc, char **argv) {
    * part of the ROS system.
    */
   ros::init(argc, argv, "talker");
+
+
 
   /**
    * NodeHandle is the main access point to communications with the ROS system.
@@ -147,6 +154,23 @@ int main(int argc, char **argv) {
 
     loop_rate.sleep();
     ++count;
+
+    /**
+     *
+     * adding in code for Week11_HW for tf
+     *
+     *
+     */
+    tf::TransformBroadcaster br;
+    tf::Transform transform;
+    ros::Rate rate(10.0);
+    while (n.ok()) {
+      transform.setOrigin(tf::Vector3(0.0, 2.0, 0.0));
+      transform.setRotation(tf::Quaternion(0, 0, 0, 1));
+      br.sendTransform(
+          tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
+      rate.sleep();
+    }
 
     // adding debug logging stream
     ROS_DEBUG_STREAM("count increased " << count);
