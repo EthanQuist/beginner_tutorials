@@ -91,8 +91,17 @@ int main(int argc, char **argv) {
    */
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
-  // taking the command line argument HERTZ
+  /**
+   *
+   * This code is for Week 11 transforms.
+   * Here is the set up code for tf to make the new frame
+   */
+  tf::TransformBroadcaster br;
+  tf::Transform transform;
+  ros::Rate rate(10.0);
 
+
+  // taking the command line argument HERTZ
   ros::Rate loop_rate(10);
   if (argc > 1) {
     int hz = atoi(argv[1]);
@@ -100,8 +109,6 @@ int main(int argc, char **argv) {
   } else {
     ros::Rate loop_rate(10);
   }
-
-
 
   /**
    * This section of code will create the client aspect added to my code.
@@ -117,6 +124,13 @@ int main(int argc, char **argv) {
    */
   int count = 0;
   while (ros::ok()) {
+    /**
+     * This is the second part of the transform code that broadcasts the frame
+     */
+    transform.setOrigin(tf::Vector3(0.0, 2.0, 0.0));
+    transform.setRotation(tf::Quaternion(0, 0, 0, 1));
+    br.sendTransform(
+        tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
     /**
      * This is a message object. You stuff it with data, and then publish it.
      */
@@ -150,30 +164,10 @@ int main(int argc, char **argv) {
      */
     chatter_pub.publish(msg);
 
-
-
-    //tf::TransformBroadcaster br;
-    //tf::Transform transform;
-    //ros::Rate rate(10.0);
-    //while (n.ok()) {
-    //  transform.setOrigin(tf::Vector3(0.0, 2.0, 0.0));
-    //  transform.setRotation(tf::Quaternion(0, 0, 0, 1));
-    //  br.sendTransform(
-    //      tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
-      //  rate.sleep();
-    //}
-
     ros::spinOnce();
 
     loop_rate.sleep();
     ++count;
-
-    /**
-     *
-     * adding in code for Week11_HW for tf
-     *
-     *
-     */
 
 
     // adding debug logging stream
