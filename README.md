@@ -59,7 +59,11 @@ roslaunch beginner_tutorials week10HW.launch hertz:=10
 ```
 
 This will start the nodes from the launcher file. You must open up separate terminals in order to individually run the nodes to see their outputs. Make sure to have the correct source before running on a terminal.
-
+```
+# In your catkin workspace
+$ cd ~/catkin_ws
+$ source ./devel/setup.bash
+```
 
 
 A core aspect of this assignment is the use of tf within ros. The talker.cpp code has been updated to add a frame called "/talk" to the "/world" frame. To see the new frame use the above code to run the service server and talker code and then in a separate terminal run:
@@ -86,14 +90,6 @@ With the saved bagfile the information recorded can be played back and in fact t
 ```
 rosbag play "your_bagfile"
 ```
-
-## In your catkin workspace
-The following source line needs to be run in every new terminal for the ros code to be executed correclty. 
-```
-$ cd ~/catkin_ws
-$ source ./devel/setup.bash
-```
-
 
 ## Dependencies
 This entire code is depenent on the correct installation of ROS KINETIC - it is the Kinetic version of ROS and may cause errors if another version of ROS is installed on your system.
