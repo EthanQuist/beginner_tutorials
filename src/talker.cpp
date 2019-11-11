@@ -33,19 +33,13 @@
  *
  * @params This code needs to take in a hertz integer input to run correctly
  */
-
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-#include "beginner_tutorials/AddTwoInts.h"
 #include <tf/transform_broadcaster.h>
-#include <cstdlib>
-#include <sstream>
 #include <ros/console.h>
-
-/**
- * tf broadcaster code for Week 11 HW
- */
-
+#include <sstream>
+#include <cstdlib>
+#include "ros/ros.h"
+#include "beginner_tutorials/AddTwoInts.h"
+#include "std_msgs/String.h"
 
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.

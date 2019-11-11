@@ -36,9 +36,10 @@
  * @params b - the second integer
  */
 
+#include <cstdlib>
 #include "beginner_tutorials/AddTwoInts.h"
 #include "ros/ros.h"
-#include <cstdlib>
+
 
 int main(int argc, char **argv) {
   ros::init(argc, argv, "add_two_ints_client");

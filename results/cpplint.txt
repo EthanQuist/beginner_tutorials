@@ -1,16 +1,9 @@
-viki@ubuntu:~/Desktop/ROStutorials2/catkin_ws/src/beginner_tutorials/src$ cpplint talker.cpp listener.cpp add_two_ints_client.cpp add_two_ints_server.cpp
-talker.cpp:40:  Found C++ system header after other header. Should be: talker.h, c system, c++ system, other.  [build/include_order] [4]
-talker.cpp:41:  Found C++ system header after other header. Should be: talker.h, c system, c++ system, other.  [build/include_order] [4]
-talker.cpp:42:  Found C system header after other header. Should be: talker.h, c system, c++ system, other.  [build/include_order] [4]
-Done processing talker.cpp
-Done processing listener.cpp
-add_two_ints_client.cpp:41:  Found C++ system header after other header. Should be: add_two_ints_client.h, c system, c++ system, other.  [build/include_order] [4]
+cpplint add_two_ints_client.cpp  add_two_ints_server.cpp  listener.cpp  talker.cpp
 Done processing add_two_ints_client.cpp
 add_two_ints_server.cpp:38:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::AddTwoInts::Request &req  [runtime/references] [2]
 add_two_ints_server.cpp:39:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::AddTwoInts::Response &res  [runtime/references] [2]
 Done processing add_two_ints_server.cpp
-Total errors found: 6
+Done processing listener.cpp
+Done processing talker.cpp
+Total errors found: 2
 
-
-
-NOTE: The errors of level 4 are for header file ordering. This error does not seem to go away.
